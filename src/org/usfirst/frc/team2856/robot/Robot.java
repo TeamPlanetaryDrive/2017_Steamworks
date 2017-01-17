@@ -28,6 +28,8 @@ public class Robot extends IterativeRobot {
     
     //Loops
     LoopVision camera;
+    LoopTele tele;
+    LoopAuto auto;
     
     //Joysticks
     Joystick left, right;
@@ -46,6 +48,11 @@ public class Robot extends IterativeRobot {
         chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
         */
+    	Constants.init();
+    	
+    	camera = new LoopVision();
+    	tele = new LoopTele();
+    	auto = new LoopAuto();
     	
     	camera.init();
     	
@@ -64,11 +71,15 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
 //    	autoSelected = (String) chooser.getSelected();
 		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
+//		SmartDashboard.putString("Auto Selector", "asasd");
 		System.out.println("Auto selected: " + autoSelected);
 		
 		
-		driveTrain.setSetpoint(10);//XXX
-		driveTrain.enable();
+//		driveTrain.setSetpoint(10);//XXX
+//		driveTrain.enable();
+		
+		
+		auto.init();
 		
     }
 
@@ -83,13 +94,13 @@ public class Robot extends IterativeRobot {
     	case defaultAuto:
     	default:
     	//Put default auto code here
-    		driveTrain.enable();
+//    		driveTrain.enable();
             break;
     	}
     }
     
     public void teleopInit() {
-    	driveTrain.disable();
+//    	driveTrain.disable();
     	
     	
     	
