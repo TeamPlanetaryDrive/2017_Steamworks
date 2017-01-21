@@ -1,4 +1,6 @@
-package org.usfirst.frc.team2856.robot;
+package org.usfirst.frc.team2856.robot.drivetrain;
+
+import org.usfirst.frc.team2856.robot.Constants;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.GenericHID;
