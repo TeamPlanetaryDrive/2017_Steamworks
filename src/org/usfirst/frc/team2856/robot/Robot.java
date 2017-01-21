@@ -52,6 +52,8 @@ public class Robot extends IterativeRobot {
         */
     	Constants.init();
     	
+    	LoopAuto.addModes();
+    	
     	camera = new LoopVision();
     	tele = new LoopTele();
     	auto = new LoopAuto();
