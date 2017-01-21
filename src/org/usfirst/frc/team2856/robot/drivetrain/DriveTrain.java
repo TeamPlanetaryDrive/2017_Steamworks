@@ -12,15 +12,23 @@ public class DriveTrain{
 	
 	
 	RobotDrive drive;
+	Side left, right;
 	
 	
 	public DriveTrain(){
 		drive = new RobotDrive(Constants.flMotor, Constants.rlMotor,
 						Constants.frMotor, Constants.rrMotor);
+		left = new Side();
+		right = new Side();
 		
+//		left.init(sc, inv, en);
+//		right.init(sc, inv, en);
 		
 	}
 	
+	public void setSetpoint(){
+		
+	}
 	
 
 	public void tankDrive(GenericHID leftStick, GenericHID rightStick){

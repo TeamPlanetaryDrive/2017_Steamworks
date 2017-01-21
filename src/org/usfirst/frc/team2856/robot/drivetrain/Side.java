@@ -15,26 +15,25 @@ public class Side extends PIDSubsystem{
 	SpeedController motor;
 	Encoder enc;
 	
-	
+	/**
+	 * Init needs to be called
+	 */
 	public Side(){
 		super("DriveTrain", Kp, Ki, Kd);
 		
+		this.setOutputRange(-0.95, 0.95);
 		this.setAbsoluteTolerance(0.05);
 		this.getPIDController().setContinuous(true);//XXX
-		enc = new Encoder(0, 1);
-		enc.reset();
-		
-		enc.setDistancePerPulse(Constants.distancePerPulse);
-		this.setOutputRange(-1, 1);
-	}
-
-	public void setMotor(SpeedController sc){
-		motor = sc;
 	}
 	
-	public void setInverted(boolean inv){
+	public void init(SpeedController sc, boolean inv, Encoder en){
+		motor = sc;
 		motor.setInverted(inv);
+		en = enc;
+		enc.reset();
+		enc.setDistancePerPulse(Constants.distancePerPulse);
 	}
+	
 	
 	protected double returnPIDInput() {
 		return enc.pidGet();
