@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class LoopAuto extends Loop{
 
-	static String[] modes = {"0", "1", "2", "3", "4", "5", "6"};
+	static String[] modes = {"LeftPeg", "MiddlePeg", "RightPeg"};
 	
 	
 	public void init() {

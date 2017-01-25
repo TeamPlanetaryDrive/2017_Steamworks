@@ -10,6 +10,9 @@ public class Constants {
 			REAR_LEFT_MOTOR_CHANNEL = 2,
 			REAR_RIGHT_MOTOR_CHANNEL = 3;
 	
+	public static int SHOOTER_CHANNEL = 4,
+			HOPPER_CHANNEL = 5;
+	
 	public static int LEFT_ENC_CHANNEL_A = 0,
 			LEFT_ENC_CHANNEL_B = 1,
 			RIGHT_ENC_CHANNEL_A = 2,
@@ -27,11 +30,16 @@ public class Constants {
 			rlMotor,
 			rrMotor;
 	
+	public static Talon shooter, hopper;
+
+	
 	public static Encoder LEnc,
 			REnc;
 	
 	public static Joystick leftJoystick,
 			rightJoystick;
+	
+	
 	
 	public static void init(){
 		flMotor = new Talon(FRONT_LEFT_MOTOR_CHANNEL);
