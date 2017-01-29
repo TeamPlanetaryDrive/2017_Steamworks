@@ -5,10 +5,10 @@ import edu.wpi.first.wpilibj.*;
 public class Constants {
 	
 	//CONSTANTS as in  numbers
-	public static int FRONT_LEFT_MOTOR_CHANNEL = 0,
-			FRONT_RIGHT_MOTOR_CHANNEL = 1,
-			REAR_LEFT_MOTOR_CHANNEL = 2,
-			REAR_RIGHT_MOTOR_CHANNEL = 3;
+	public static int LEFT_MOTOR_CHANNEL = 0,
+			RIGHT_MOTOR_CHANNEL = 1,
+			SYNC_LEFT_MOTOR_CHANNEL = 2,
+			SYNC_RIGHT_MOTOR_CHANNEL = 3;
 	
 	public static int SHOOTER_CHANNEL = 4,
 			HOPPER_CHANNEL = 5;
@@ -25,10 +25,10 @@ public class Constants {
 	
 	
 	//HARDWARE
-	public static Talon flMotor,
-			frMotor,
-			rlMotor,
-			rrMotor;
+	public static Talon lMotor,
+			rMotor,
+			sync_lMotor,
+			sync_rMotor;
 	
 	public static Talon shooter, hopper;
 
@@ -42,10 +42,10 @@ public class Constants {
 	
 	
 	public static void init(){
-		flMotor = new Talon(FRONT_LEFT_MOTOR_CHANNEL);
-		frMotor = new Talon(FRONT_RIGHT_MOTOR_CHANNEL);
-		rlMotor = new Talon(REAR_LEFT_MOTOR_CHANNEL);
-		rrMotor = new Talon(REAR_RIGHT_MOTOR_CHANNEL);
+		lMotor = new Talon(LEFT_MOTOR_CHANNEL);
+		rMotor = new Talon(RIGHT_MOTOR_CHANNEL);
+		sync_lMotor = new Talon(SYNC_LEFT_MOTOR_CHANNEL);
+		sync_rMotor = new Talon(SYNC_RIGHT_MOTOR_CHANNEL);
 		
 		LEnc = new Encoder(LEFT_ENC_CHANNEL_A, LEFT_ENC_CHANNEL_B);
 		REnc = new Encoder(RIGHT_ENC_CHANNEL_A, RIGHT_ENC_CHANNEL_B);

@@ -12,17 +12,19 @@ public class DriveTrain{
 	
 	
 	RobotDrive drive;
-	Side left, right;
+	PIDMotor left, right;
 	
 	
 	public DriveTrain(){
-		drive = new RobotDrive(Constants.flMotor, Constants.rlMotor,
-						Constants.frMotor, Constants.rrMotor);
-		left = new Side();
-		right = new Side();
+		drive = new RobotDrive(Constants.lMotor, Constants.sync_lMotor,
+						Constants.rMotor, Constants.sync_rMotor);
+		left = new PIDMotor();
+		right = new PIDMotor();
 		
-//		left.init(sc, inv, en);
-//		right.init(sc, inv, en);
+		left.init(Constants.lMotor, true, Constants.LEnc, false);
+		left.init(Constants.rMotor, false, Constants.REnc, false);
+		
+		
 		
 	}
 	

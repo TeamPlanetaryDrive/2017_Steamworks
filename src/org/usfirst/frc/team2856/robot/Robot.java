@@ -34,10 +34,10 @@ public class Robot extends IterativeRobot {
     LoopAuto auto;
     
     //Joysticks
-    Joystick left, right;
-    DriveTrain driveTrain;
-    
-    
+    public Joystick left, right;
+    public DriveTrain driveTrain;
+    public Shooter shooter;
+    public Climber climber;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -54,9 +54,9 @@ public class Robot extends IterativeRobot {
     	
     	LoopAuto.addModes();
     	
-    	camera = new LoopVision();
-    	tele = new LoopTele();
-    	auto = new LoopAuto();
+    	camera = new LoopVision(this);
+    	tele = new LoopTele(this);
+    	auto = new LoopAuto(this);
     	
     	camera.init();
     	
@@ -99,6 +99,7 @@ public class Robot extends IterativeRobot {
     	default:
     	//Put default auto code here
 //    		driveTrain.enable();
+    		auto.loop();
             break;
     	}
     }
@@ -106,7 +107,7 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
 //    	driveTrain.disable();
     	
-    	
+    	tele.init();
     	
     	
     }
@@ -115,8 +116,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        driveTrain.tankDrive(left, right);
-        
+    	tele.loop();
         
     }
     
