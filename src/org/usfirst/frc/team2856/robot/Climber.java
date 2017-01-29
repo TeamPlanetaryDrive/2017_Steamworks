@@ -2,7 +2,7 @@ package org.usfirst.frc.team2856.robot;
 
 import edu.wpi.first.wpilibj.*;
 
-//climber class
+//this is the climber class
 public class Climber {
 	//PMVs
 	private SpeedController motor;
