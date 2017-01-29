@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.Talon;
  */
 public class Shooter {
 	
-	
+	//booleans added
 	boolean shooterOn, hopperOn;
 	
 	SpeedController hopper, phopper, shooter;
