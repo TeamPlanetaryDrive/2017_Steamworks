@@ -1,5 +1,10 @@
 package org.usfirst.frc.team2856.robot;
 
+import org.usfirst.frc.team2856.robot.drivetrain.PIDMotor;
+
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Talon;
 
 /**
  * 
@@ -11,12 +16,19 @@ public class Shooter {
 	
 	boolean shooterOn, hopperOn;
 	
-	//SpeedController hopper, shooter;
-	//XXX create phopper
+	SpeedController hopper, phopper, shooter;
+	Encoder en;
+	PIDMotor pidShoot;
 	
 	public Shooter() {
 		shooterOn = false;
 		hopperOn = false;
+		hopper = new Talon(10000);
+		phopper = new Talon(10001);
+		shooter = new Talon(10002);
+		en = new Encoder(17648736, 36583275);
+		pidShoot = new PIDMotor();
+		pidShoot.init(shooter, false, en, true);
 	}
 	
 	public void toggleShooter() {
@@ -34,10 +46,12 @@ public class Shooter {
 	 */
 	public void update(){
 		
+		
+		
 		if(shooterOn)
-			Constants.shooter.set(0.9);//XXX This will eventually be PID controlled
+			pidShoot.setSetpoint(0.9);//XXX This will eventually be PID controlled
 		else
-			Constants.shooter.set(0);
+			pidShoot.setSetpoint(0);
 		
 		//XXX
 		if(hopperOn){
