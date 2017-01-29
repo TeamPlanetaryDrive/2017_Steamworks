@@ -13,7 +13,7 @@ public class Climber {
 		motor=new Talon(786856); //not actual channel
 	}
 	
-	//tell it whether or not to move
+	//move
 	public void set(boolean turn){
 		if(turn)
 			motor.set(speed);
