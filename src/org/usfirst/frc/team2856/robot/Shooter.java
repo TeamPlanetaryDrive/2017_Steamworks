@@ -30,7 +30,7 @@ public class Shooter {
 		pidShoot = new PIDMotor();
 		pidShoot.init(shooter, false, en, true);
 	}
-	//toggle
+	
 	public void toggleShooter() {
 		shooterOn = !shooterOn;
 	}
