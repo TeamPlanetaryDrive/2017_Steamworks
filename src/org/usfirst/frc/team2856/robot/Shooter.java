@@ -21,14 +21,15 @@ public class Shooter {
 	PIDMotor pidShoot;
 	
 	public Shooter() {
-		shooterOn = false;
-		hopperOn = false;
-		hopper = new Talon(10000);
-		phopper = new Talon(10001);
-		shooter = new Talon(10002);
-		en = new Encoder(17648736, 36583275);
-		pidShoot = new PIDMotor();
-		pidShoot.init(shooter, false, en, true);
+		// instantiate thingymabobs
+		shooterOn = false; //is the shooter on
+		hopperOn = false;  //is the hopper on
+		hopper = new Talon(10000);  //new motor hopper
+		phopper = new Talon(10001); //new motor pseudo-hopper
+		shooter = new Talon(10002); //new motor shooter
+		en = new Encoder(17648736, 36583275); //new encoder
+		pidShoot = new PIDMotor();  //shooter needs to be precise, so use a PID
+		pidShoot.init(shooter, false, en, true);  //initialize 
 	}
 	
 	public void toggleShooter() {
@@ -49,18 +50,20 @@ public class Shooter {
 		
 		
 		if(shooterOn)
-			pidShoot.setSetpoint(0.9);//XXX This will eventually be PID controlled
+			pidShoot.setSetpoint(0.9); //make shooter spin
 		else
-			pidShoot.setSetpoint(0);
+			pidShoot.setSetpoint(0);   //make shooter not spin
 		
 		//XXX
 		if(hopperOn){
-			if(Constants.leftJoystick.getRawButton(3024721))//some value
-				Constants.hopper.set(0.5);//XXX This will eventually be PID controlled
-			else
-				Constants.hopper.set(0.9);
-		}else
-			Constants.hopper.set(0);
+			if(Constants.leftJoystick.getRawButton(3024721)){//some value
+				Constants.hopper.set(0.5); //set hopper speed
+			}else{
+				Constants.hopper.set(0.9); //set heckin fast hopper speed
+			}
+		}
+		else
+			Constants.hopper.set(0);  //make hopper not spin
 		
 		
 		
