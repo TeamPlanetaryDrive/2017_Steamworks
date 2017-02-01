@@ -10,15 +10,16 @@ public class Climber {
 	
 	//constructor
 	public Climber(){
-		motor=new Talon(786856); //not actual channel
+		motor = Constants.climber; //not actual channel
 	}
 	
 	//move
-	public void set(boolean turn){
-		if(turn)
+	public void update(){
+		if(Constants.leftJoystick.getRawButton(0000000000000)){
 			motor.set(speed);
-		else
+		}else{
 			motor.set(0);
+		}
 	}
 	
 	//getter
