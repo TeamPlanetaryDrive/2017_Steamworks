@@ -16,13 +16,12 @@ public class DriveTrain{
 	
 	
 	public DriveTrain(){
-		drive = new RobotDrive(Constants.lMotor, Constants.sync_lMotor,
-						Constants.rMotor, Constants.sync_rMotor);
+		drive = new RobotDrive(Constants.lMotor, Constants.rMotor);
 		left = new PIDMotor();
 		right = new PIDMotor();
 		
 		left.init(Constants.lMotor, true, Constants.LEnc, false);
-		left.init(Constants.rMotor, false, Constants.REnc, false);
+		right.init(Constants.rMotor, false, Constants.REnc, false);
 		
 		
 		
@@ -30,11 +29,18 @@ public class DriveTrain{
 	
 	public void setSetpoint(){
 		
+		left.setSetpoint(0000000000000000000);
+		right.setSetpoint(0000000000000000000);
+		
+		Constants.sync_lMotor.set(Constants.lMotor.get());
+		Constants.sync_rMotor.set(Constants.rMotor.get());
 	}
 	
 
 	public void tankDrive(GenericHID leftStick, GenericHID rightStick){
 		drive.tankDrive(leftStick, rightStick);
+		Constants.sync_lMotor.set(Constants.lMotor.get());
+		Constants.sync_rMotor.set(Constants.rMotor.get());
 	}
 
 	

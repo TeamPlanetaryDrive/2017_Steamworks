@@ -47,7 +47,7 @@ public class Shooter {
 	 * Each call will be a single call within the loop.
 	 * 
 	 */
-	public void update(){
+	public void updateTele(){
 		
 		
 		

@@ -14,7 +14,7 @@ public class Climber {
 	}
 	
 	//move
-	public void update(){
+	public void updateTele(){
 		if(Constants.leftJoystick.getRawButton(0000000000000)){
 			motor.set(speed);
 		}else{
