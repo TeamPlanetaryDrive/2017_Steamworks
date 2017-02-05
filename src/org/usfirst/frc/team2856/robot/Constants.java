@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2856.robot;
 
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 public class Constants {
@@ -19,7 +18,7 @@ public class Constants {
 			SYNC_HOPPER_CHANNEL = 6,
 			CLIMBER_CHANNEL = 7;
 	
-	public static Port GYRO_PORT;
+//	public static Port GYRO_PORT;
 	
 	//Analog Channels (0-3, 4-7)
 	
@@ -58,7 +57,7 @@ public class Constants {
 	public static Gyro gyro;
 	
 	public static void init(){
-		GYRO_PORT.value = 0;
+//		GYRO_PORT.value = 0;
 		
 		lMotor = new Talon(LEFT_MOTOR_CHANNEL);
 		rMotor = new Talon(RIGHT_MOTOR_CHANNEL);
@@ -77,7 +76,7 @@ public class Constants {
 		leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
 		rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
 		
-		gyro = new ADXRS450_Gyro(GYRO_PORT);
+		gyro = new ADXRS450_Gyro();
 		
 	}
 	

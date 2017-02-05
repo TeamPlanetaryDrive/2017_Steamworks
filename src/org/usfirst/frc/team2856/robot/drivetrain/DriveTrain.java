@@ -2,10 +2,9 @@ package org.usfirst.frc.team2856.robot.drivetrain;
 
 import org.usfirst.frc.team2856.robot.Constants;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 public class DriveTrain{
 	
@@ -13,7 +12,7 @@ public class DriveTrain{
 	
 	RobotDrive drive;
 	PIDMotor left, right;
-	
+	Gyro gyro;
 	
 	public DriveTrain(){
 		drive = new RobotDrive(Constants.lMotor, Constants.rMotor);
@@ -23,8 +22,10 @@ public class DriveTrain{
 		left.init(Constants.lMotor, true, Constants.LEnc, false);
 		right.init(Constants.rMotor, false, Constants.REnc, false);
 		
-		
-		
+		gyro = Constants.gyro;
+		gyro.reset();
+		//XXX Calibrate gyro
+//		gyro.calibrate();
 	}
 	
 	public void setSetpoint(){
