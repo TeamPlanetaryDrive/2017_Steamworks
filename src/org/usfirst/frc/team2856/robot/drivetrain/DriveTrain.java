@@ -24,8 +24,7 @@ public class DriveTrain{
 		
 		gyro = Constants.gyro;
 		gyro.reset();
-		//XXX Calibrate gyro
-//		gyro.calibrate();
+		gyro.calibrate();
 	}
 	
 	public void setSetpoint(){
