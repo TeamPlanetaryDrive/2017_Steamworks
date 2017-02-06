@@ -6,11 +6,32 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class LoopAuto extends Loop{
 
-	static String[] modes = {"LeftPeg", "MiddlePeg", "RightPeg"};
+	static String[] modes = {"l", "m", "r", "s"};
+	
+	String autoSelected;
 	
 	public LoopAuto(Robot rob){super(rob);}
 	
 	public void init() {
+		autoSelected = SmartDashboard.getString("Auto Selector", "None");
+		
+		
+		switch(autoSelected){
+		
+		case "l":
+			break;
+		case "m":
+			break;
+		case "r":
+			break;
+		case "s":
+			break;
+		default:
+			break;
+		}
+		
+		
+		
 		
 	}
 
