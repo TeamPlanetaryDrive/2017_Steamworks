@@ -6,25 +6,36 @@ import edu.wpi.first.wpilibj.*;
 public class Climber {
 	//PMVs
 	private SpeedController motor;
-	private double speed = 0.6;
+	private double climbspeed = 0.3424243244;
+	private final double intakespeed=0.111111111;
+	private boolean intakeOn;
 	
 	//constructor
 	public Climber(){
 		motor = Constants.climber; //not actual channel
+		intakeOn=true;
+	}
+	
+	public void toggleIntake(){
+		intakeOn=!intakeOn;
 	}
 	
 	//move
 	public void updateTele(){
+		this.setClimbSpeed(Constants.leftJoystick.getY());
 		if(Constants.leftJoystick.getRawButton(0000000000000)){
-			motor.set(speed);
-		}else{
+			if(intakeOn)
+				motor.set(intakespeed);
+			else
+				motor.set(climbspeed);
+		}else
 			motor.set(0);
-		}
 	}
 	
-	//getter
-	public double getSpeed(){return speed;}
+	//accessors
+	public double getClimbSpeed(){return climbspeed;}
+	public double getIntakeSpeed(){return intakespeed;}
 	
-	//setter
-	public void setSpeed(double num){speed=num;}
+	//mutators
+	public void setClimbSpeed(double num){climbspeed=num;}
 }
