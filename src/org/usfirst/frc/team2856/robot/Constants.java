@@ -9,14 +9,13 @@ public class Constants {
 	
 	//Digital (0-9, 10-25)
 	public static int LEFT_MOTOR_CHANNEL = 0,
-			RIGHT_MOTOR_CHANNEL = 1,
-			SYNC_LEFT_MOTOR_CHANNEL = 2,
-			SYNC_RIGHT_MOTOR_CHANNEL = 3;
+			RIGHT_MOTOR_CHANNEL = 1;
 	
-	public static int SHOOTER_CHANNEL = 4,
-			HOPPER_CHANNEL = 5,
-			SYNC_HOPPER_CHANNEL = 6,
-			CLIMBER_CHANNEL = 7;
+	public static int SHOOTER_CHANNEL = 2,
+			HOPPER_CHANNEL = 3,
+			CLIMBER_CHANNEL = 4;
+	
+	public static int LIMIT_SWITCH_CHANNEL = 5;
 	
 //	public static Port GYRO_PORT;
 	
@@ -29,23 +28,27 @@ public class Constants {
 			SHOOTER_ENC_CHANNEL_A = 4,
 			SHOOTER_ENC_CHANNEL_B = 5;
 	
+	
 	public static int LEFT_JOYSTICK_PORT = 0,
 			RIGHT_JOYSTICK_PORT = 1;
 	
 	public static double distancePerPulse = 0.0637;
 	
 	
+	
+	
+	
+	//Will add PWM Channels
+	
 	//HARDWARE
 	public static Talon lMotor,
-			rMotor,
-			sync_lMotor,
-			sync_rMotor;
+			rMotor;
 	
 	public static Talon shooter, 
 			hopper, 
-			sync_hopper,
 			climber;
 
+	public static DigitalInput gearIn;
 	
 	public static Encoder LEnc,
 			REnc,
@@ -56,18 +59,19 @@ public class Constants {
 	
 	public static Gyro gyro;
 	
+	
+	
 	public static void init(){
 //		GYRO_PORT.value = 0;
 		
 		lMotor = new Talon(LEFT_MOTOR_CHANNEL);
 		rMotor = new Talon(RIGHT_MOTOR_CHANNEL);
-		sync_lMotor = new Talon(SYNC_LEFT_MOTOR_CHANNEL);
-		sync_rMotor = new Talon(SYNC_RIGHT_MOTOR_CHANNEL);
 		
 		shooter = new Talon(SHOOTER_CHANNEL);
 		hopper = new Talon(HOPPER_CHANNEL);
-		sync_hopper = new Talon(SYNC_HOPPER_CHANNEL);
 		climber = new Talon(CLIMBER_CHANNEL);
+		
+		gearIn = new DigitalInput(LIMIT_SWITCH_CHANNEL);
 		
 		LEnc = new Encoder(LEFT_ENC_CHANNEL_A, LEFT_ENC_CHANNEL_B);
 		REnc = new Encoder(RIGHT_ENC_CHANNEL_A, RIGHT_ENC_CHANNEL_B);

@@ -32,15 +32,11 @@ public class DriveTrain{
 		left.setSetpoint(0000000000000000000);
 		right.setSetpoint(0000000000000000000);
 		
-		Constants.sync_lMotor.set(Constants.lMotor.get());
-		Constants.sync_rMotor.set(Constants.rMotor.get());
 	}
 	
 
 	public void tankDrive(GenericHID leftStick, GenericHID rightStick){
 		drive.tankDrive(leftStick, rightStick);
-		Constants.sync_lMotor.set(Constants.lMotor.get());
-		Constants.sync_rMotor.set(Constants.rMotor.get());
 	}
 
 	

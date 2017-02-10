@@ -16,7 +16,7 @@ public class Shooter {
 	//booleans added
 	boolean shooterOn, hopperOn;
 	
-	SpeedController hopper, sync_hopper, shooter;
+	SpeedController hopper, shooter;
 	Encoder enc;
 	PIDMotor pidShoot;
 	
@@ -26,7 +26,6 @@ public class Shooter {
 		hopperOn = false;  //is the hopper on
 		
 		hopper = Constants.hopper;  //new motor hopper
-		sync_hopper = Constants.sync_hopper; //new motor pseudo-hopper
 		shooter = Constants.shooter; //new motor shooter
 		enc = Constants.SEnc; //new encoder
 		
@@ -67,7 +66,6 @@ public class Shooter {
 			Constants.hopper.set(0);
 		}
 		
-		sync_hopper.set(hopper.get());
 		//Should use PID
 		
 	}
