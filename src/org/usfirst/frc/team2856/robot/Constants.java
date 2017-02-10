@@ -59,7 +59,7 @@ public class Constants {
 	
 	public static Gyro gyro;
 	
-	
+	public static DigitalInput gear;
 	
 	public static void init(){
 //		GYRO_PORT.value = 0;
@@ -82,6 +82,7 @@ public class Constants {
 		
 		gyro = new ADXRS450_Gyro();
 		
+		gear = new DigitalInput(LIMIT_SWITCH_CHANNEL);
 	}
 	
 }
