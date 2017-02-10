@@ -16,27 +16,28 @@ public class LoopAuto extends Loop{
 		autoSelected = SmartDashboard.getString("Auto Selector", "None");
 		
 		
-		switch(autoSelected){
-		
-		case "l":
-			break;
-		case "m":
-			break;
-		case "r":
-			break;
-		case "s":
-			break;
-		default:
-			break;
-		}
-		
-		
 		
 		
 	}
 
 	public void loop() {
+		switch(autoSelected){
 		
+		case "l":
+			leftPegCommands();
+			break;
+		case "m":
+			middlePegCommands();
+			break;
+		case "r":
+			rightPegCommands();
+			break;
+		case "s":
+			shootCommands();
+			break;
+		default:
+			break;
+		}
 	}
 	
 	public static void addModes(){
@@ -44,6 +45,19 @@ public class LoopAuto extends Loop{
 		for(int i = 0; i < modes.length; i++){
 			SmartDashboard.putString("Auto Selector", modes[i]);
 		}
+		
+	}
+	
+	public void leftPegCommands() {
+		
+	}
+	public void middlePegCommands() {
+		
+	}
+	public void rightPegCommands() {
+	
+	}
+	public void shootCommands() {
 		
 	}
 	
