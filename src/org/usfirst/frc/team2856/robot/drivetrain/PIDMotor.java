@@ -30,7 +30,7 @@ public class PIDMotor extends PIDSubsystem{
 		motor = sc;
 		motor.setInverted(inv);
 		
-		en = enc;
+		enc = en;
 		enc.reset();
 		enc.setDistancePerPulse(Constants.distancePerPulse);
 		
