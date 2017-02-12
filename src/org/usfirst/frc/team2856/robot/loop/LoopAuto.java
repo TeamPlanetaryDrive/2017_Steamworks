@@ -70,7 +70,7 @@ public class LoopAuto extends Loop{
 		robot.driveTrain.moveStraight(102340);
 		//while(centeredOnGoal == false)
 		//	  robot.driveTrain.turn(drive.centerOnGoal);
-		Constants.shooter.toggleShooter();
+		Constants.shooter.set(0.98);;
 	}
 	
 }
