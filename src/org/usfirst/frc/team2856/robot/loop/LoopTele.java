@@ -23,7 +23,7 @@ public class LoopTele extends Loop{
 	
 	public void loop() {
 		
-		robot.driveTrain.tankDrive(robot.left, robot.right);
+		robot.driveTrain.arcadeDrive(robot.left);
 		robot.shooter.updateTele();
 		robot.climber.updateTele();
 		

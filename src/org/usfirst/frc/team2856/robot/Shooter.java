@@ -16,21 +16,26 @@ public class Shooter {
 	//booleans added
 	boolean shooterOn, hopperOn;
 	
+	private static double Kp = 1,
+			Ki = 0.1,
+			Kd = 0;
+	
 	SpeedController hopper, shooter;
 	Encoder enc;
 	PIDMotor pidShoot;
 	
 	public Shooter() {
-		// instantiate thingymabobs
-		shooterOn = false; //is the shooter on
-		hopperOn = false;  //is the hopper on
 		
-		hopper = Constants.hopper;  //new motor hopper
-		shooter = Constants.shooter; //new motor shooter
-		enc = Constants.SEnc; //new encoder
+		shooterOn = false;
+		hopperOn = false;
 		
-		pidShoot = new PIDMotor();  //shooter needs to be precise, so use a PID
-		pidShoot.init(shooter, false, enc, true);  //initialize 
+		hopper = Constants.hopper;
+		shooter = Constants.shooter;
+		enc = Constants.SEnc;
+		
+		pidShoot = new PIDMotor(Kp, Ki, Kd);
+		
+		pidShoot.init(shooter, false, enc);
 	}
 	
 	public void toggleShooter() {
