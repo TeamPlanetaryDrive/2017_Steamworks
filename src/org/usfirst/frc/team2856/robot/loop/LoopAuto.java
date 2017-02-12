@@ -52,20 +52,20 @@ public class LoopAuto extends Loop{
 	}
 	
 	public void leftPegCommands() {
-		robot.driveTrain.moveStraight(102340);
-		robot.driveTrain.moveTurn(1, 123);
+		robot.driveTrain.moveStraight(2);
+		robot.driveTrain.moveTurn(1, 90);
 	}
 	public void middlePegCommands() {
-		robot.driveTrain.moveStraight(102340);
-		robot.driveTrain.moveTurn(1, 123);
+		robot.driveTrain.moveStraight(2);
+		robot.driveTrain.moveTurn(1, 90);
 	}
 	public void rightPegCommands(){
-		robot.driveTrain.moveStraight(102340);
-		robot.driveTrain.moveTurn(1, 123);
+		robot.driveTrain.moveStraight(2);
+		robot.driveTrain.moveTurn(1, 90);
 	}
 	public void shootCommands() {
-		robot.driveTrain.moveStraight(102340);
-		robot.driveTrain.moveTurn(1, 123);
+		robot.driveTrain.moveStraight(2);
+		robot.driveTrain.moveTurn(1, 90);
 		Constants.shooter.set(0.98);;
 	}
 	
