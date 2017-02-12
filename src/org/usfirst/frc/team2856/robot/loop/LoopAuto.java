@@ -53,23 +53,19 @@ public class LoopAuto extends Loop{
 	
 	public void leftPegCommands() {
 		robot.driveTrain.moveStraight(102340);
-		//while(centeredOnPeg == false)
-		//	  robot.driveTrain.turn(drive.centerOnPeg);
+		robot.driveTrain.moveTurn(1, 123);
 	}
 	public void middlePegCommands() {
 		robot.driveTrain.moveStraight(102340);
-		//while(centeredOnPeg == false)
-		//	  robot.driveTrain.turn(drive.centerOnPeg);
+		robot.driveTrain.moveTurn(1, 123);
 	}
-	public void rightPegCommands() {
+	public void rightPegCommands(){
 		robot.driveTrain.moveStraight(102340);
-		//while(centeredOnPeg == false)
-		//	  robot.driveTrain.turn(drive.centerOnPeg);
+		robot.driveTrain.moveTurn(1, 123);
 	}
 	public void shootCommands() {
 		robot.driveTrain.moveStraight(102340);
-		//while(centeredOnGoal == false)
-		//	  robot.driveTrain.turn(drive.centerOnGoal);
+		robot.driveTrain.moveTurn(1, 123);
 		Constants.shooter.set(0.98);;
 	}
 	
