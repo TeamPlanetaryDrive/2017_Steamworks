@@ -52,15 +52,6 @@ public class Shooter {
 	 * 
 	 */
 	public void updateTele(){
-		//trigger code
-		if(Constants.leftJoystick.getRawButton(1)==true){
-			toggleShooter();
-			toggleHopper();
-		}
-		else{
-			shooterOn=false;
-			hopperOn=false;
-		}
 		if(shooterOn)
 			pidShoot.setSetpoint(0.9);
 		else
@@ -78,8 +69,14 @@ public class Shooter {
 			Constants.hopper.set(0);
 		}
 
+
 		//Should use PID
 
 	}
-
+	//accessors
+	public boolean getshooterOn(){return shooterOn;}
+	public boolean gethopperOn(){return hopperOn;}
+	//mutators
+	public void setshooterOn(boolean value){shooterOn=value;}
+	public void sethopperOn(boolean value){hopperOn=value;}
 }
