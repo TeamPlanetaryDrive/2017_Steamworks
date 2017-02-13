@@ -9,7 +9,6 @@ public class Climber {
 	private double climbSpeed = 0.3424243244;	//climbSpeed & intakeSpeed are random values
 	private final double intakeSpeed=0.111111111;
 	
-	
 	private boolean intakeOn;
 	boolean prevIntake;
 	boolean currIntake;
