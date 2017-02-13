@@ -6,54 +6,45 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 public class PIDMotor extends PIDSubsystem{
-	private static final double Kp = 1,
-			Ki = 0.1,
-			Kd = 0;
 	
 	//PIDController ...
-	SpeedController motor;
-	Encoder enc;
-	
+	public SpeedController motor;
+	public PIDSource src;
+	public double multiplier;
 	
 	/**
 	 * Init needs to be called
 	 */
-	public PIDMotor(){
+	public PIDMotor(double Kp, double Ki, double Kd){
 		super("PIDMotor", Kp, Ki, Kd);
 		
 		this.setOutputRange(-0.95, 0.95);
 		this.setAbsoluteTolerance(0.05);
 		this.getPIDController().setContinuous(true);//XXX
+		multiplier = 1;
 	}
 	
-	public void init(SpeedController sc, boolean inv, Encoder en, boolean rate){
+	public void init(SpeedController sc, boolean inv, PIDSource en){
 		motor = sc;
 		motor.setInverted(inv);
 		
-		enc = en;
-		enc.reset();
-		enc.setDistancePerPulse(Constants.distancePerPulse);
+		src = en;
 		
-		if(rate)
-			enc.setPIDSourceType(PIDSourceType.kRate);
-		else
-			enc.setPIDSourceType(PIDSourceType.kDisplacement);
 	}
 	
 	
 	protected double returnPIDInput() {
-		return enc.pidGet();		
+		return src.pidGet();		
 			
 	}
 
 	protected void usePIDOutput(double output) {
-		motor.set(output);
+		motor.set(output * multiplier);
 	}
 
-	//XXX
+	@Deprecated
 	protected void initDefaultCommand() {
 		//this.setSetpoint(10);	
 	}
-	
 }
 	

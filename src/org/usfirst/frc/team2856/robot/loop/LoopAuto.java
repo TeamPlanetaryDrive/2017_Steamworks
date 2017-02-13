@@ -1,6 +1,8 @@
 package org.usfirst.frc.team2856.robot.loop;
 
+import org.usfirst.frc.team2856.robot.Constants;
 import org.usfirst.frc.team2856.robot.Robot;
+import org.usfirst.frc.team2856.robot.Shooter;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -8,6 +10,7 @@ public class LoopAuto extends Loop{
 
 	static String[] modes = {"l", "m", "r", "s"};
 	
+	//IterativeRobot robot;
 	String autoSelected;
 	
 	public LoopAuto(Robot rob){super(rob);}
@@ -49,16 +52,21 @@ public class LoopAuto extends Loop{
 	}
 	
 	public void leftPegCommands() {
-		
+		robot.driveTrain.moveStraight(2);
+		robot.driveTrain.moveTurn(1, 90);
 	}
 	public void middlePegCommands() {
-		
+		robot.driveTrain.moveStraight(2);
+		robot.driveTrain.moveTurn(1, 90);
 	}
-	public void rightPegCommands() {
-	
+	public void rightPegCommands(){
+		robot.driveTrain.moveStraight(2);
+		robot.driveTrain.moveTurn(1, 90);
 	}
 	public void shootCommands() {
-		
+		robot.driveTrain.moveStraight(2);
+		robot.driveTrain.moveTurn(1, 90);
+		Constants.shooter.set(0.98);;
 	}
 	
 }
