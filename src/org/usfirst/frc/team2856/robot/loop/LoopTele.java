@@ -23,12 +23,7 @@ public class LoopTele extends Loop{
 	//XXX Climber
 
 	public void loop() {
-
-		robot.driveTrain.arcadeDrive(robot.left);
-		robot.shooter.updateTele();
-		robot.climber.updateTele();
-
-		//trigger code
+		//trigger code(firing)
 		if(Constants.leftJoystick.getRawButton(1)==true){
 			robot.shooter.toggleShooter();
 			robot.shooter.toggleHopper();
@@ -37,6 +32,14 @@ public class LoopTele extends Loop{
 			robot.shooter.setshooterOn(false);
 			robot.shooter.sethopperOn(false);
 		}
+		//climber code(switiching intake modes)
+		if(Constants.leftJoystick.getRawButton(6)==true){
+			robot.climber.setIntakeOn(false);
+		}
+		robot.driveTrain.arcadeDrive(robot.left);
+		robot.shooter.updateTele();
+		robot.climber.updateTele();
+
 
 	}
 
