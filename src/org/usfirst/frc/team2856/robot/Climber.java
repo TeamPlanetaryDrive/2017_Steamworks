@@ -66,4 +66,5 @@ public class Climber {
 	//mutators
 	public void setClimbSpeed(double num){climbSpeed=num;}
 	public void setIntakeOn(boolean value){intakeOn=value;}
+	public void toggleIntake(){intakeOn = !intakeOn;}
 }

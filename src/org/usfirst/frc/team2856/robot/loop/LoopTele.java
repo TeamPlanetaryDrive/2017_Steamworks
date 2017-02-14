@@ -32,9 +32,9 @@ public class LoopTele extends Loop{
 			robot.shooter.setshooterOn(false);
 			robot.shooter.sethopperOn(false);
 		}
-		//climber code(switiching intake modes)
+		//climber code(switching intake modes)
 		if(Constants.leftJoystick.getRawButton(6)==true){
-			robot.climber.setIntakeOn(false);
+			robot.climber.toggleIntake();
 		}
 		robot.driveTrain.arcadeDrive(robot.left);
 		robot.shooter.updateTele();
