@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 public class DriveTrain{
 
-	RobotDrive drive;
+	public RobotDrive drive;
 	Encoder leftEnc, rightEnc;
-	PIDMotor leftPID, rightPID;
+//	PIDMotor leftPID, rightPID;
 	Gyro gyro;
 	PowerDistributionPanel power;
 
@@ -18,11 +18,11 @@ public class DriveTrain{
 	double leftInitialPos, rightInitialPos;
 	boolean moveActive;
 	double smallNumber;
-
-
-	private static double Kp = 1,
+	PIDController leftPID, rightPID;
+	
+	private static double Kp = 2,
 			Ki = 0.1,
-			Kd = 0;
+			Kd = 1;
 
 	private static double accelRate = 2.5;
 	private static double maxSpeed = 2.5;
@@ -30,8 +30,8 @@ public class DriveTrain{
 
 	public DriveTrain(){
 		drive = new RobotDrive(Constants.lMotor, Constants.rMotor);
-		leftPID = new PIDMotor(Kp, Ki, Kd);
-		rightPID = new PIDMotor(Kp, Ki, Kd);
+		leftPID = new PIDController(Kp, Ki, Kd, Constants.LEnc, Constants.lMotor, 0.01);
+		rightPID = new PIDController(Kp, Ki, Kd, Constants.REnc, Constants.rMotor, 0.01);
 
 
 		//Encoder Setup
@@ -51,16 +51,18 @@ public class DriveTrain{
 		rightEnc.setSamplesToAverage(Constants.DRIVE_ENC_SAMPLES_TO_AVERAGE);
 
 		//PIDController
-		leftPID.init(Constants.lMotor, true, Constants.LEnc);
-		rightPID.init(Constants.rMotor, false, Constants.REnc);
+//		leftPID.init(Constants.lMotor, true, Constants.LEnc);
+//		rightPID.init(Constants.rMotor, false, Constants.REnc);
+		leftPID.setOutputRange (-0.95, 0.95);
+		rightPID.setOutputRange (-0.95, 0.95);
 
-
-
+		
 
 		gyro = Constants.gyro;
 		gyro.reset();
 		gyro.calibrate();
-
+		
+		moveActive = false;
 		refGen = new MoveRefGen();
 
 		power = new PowerDistributionPanel();
@@ -84,8 +86,8 @@ public class DriveTrain{
 	}
 
 	private void moveStart(double distance) {
-		leftPID.getPIDController().reset(); 
-		rightPID.getPIDController().reset();
+		leftPID.reset(); 
+		rightPID.reset();
 
 		leftPID.setSetpoint( leftEnc.getDistance() );
 		rightPID.setSetpoint( rightEnc.getDistance() );
@@ -99,8 +101,8 @@ public class DriveTrain{
 	}
 
 	public void moveStraight(double distance) {
-		leftPID.multiplier = 1;
-		rightPID.multiplier = 1;
+		leftMultiplier = 1;
+		rightMultiplier = 1;
 		moveStart(distance);
 	}
 
@@ -158,4 +160,10 @@ public class DriveTrain{
 			}
 		}
 	}
+	
+	
+	public boolean moveGetActive() {
+		return moveActive;
+	}
+	
 }
