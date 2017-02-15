@@ -22,7 +22,6 @@ public class LoopAuto extends Loop{
 		Constants.lMotor.setInverted(false);
 		Constants.rMotor.setInverted(true);
 		autoSelected = SmartDashboard.getString("Auto Selector", "None");
-		autoSelected = "Line";
 		System.out.println("Auto selected: " + autoSelected);
 		state = 0;
 		
@@ -198,21 +197,90 @@ public class LoopAuto extends Loop{
 	
 	
 	public void leftPegCommands() {
-		robot.driveTrain.moveStraight(1);
+		switch(state) {
+			case 0:
+				if (!drive.moveGetActive())
+				{
+					drive.moveStraight(Constants.AUTO_DIST);
+					state++;
+				}
+			case 1:
+				if (!drive.moveGetActive())
+				{
+					drive.moveTurn(90.0, 0.0);
+					state++;
+				}
+			case 2:
+				//if (LoopVision.getDistanceFromCenter())
+				{
+					//If the robot is off from its course, adjust and go back a step.
+					this.adjust();
+					state--;
+				}
+			
+		}
+		
+		//robot.driveTrain.moveStraight(1);
 		//robot.driveTrain.moveTurn(1, 90);
 	}
 	public void middlePegCommands() {
-		robot.driveTrain.moveStraight(1);
-		robot.driveTrain.moveTurn(1, 90);
+		switch(state) {
+		case 0:
+			if (!drive.moveGetActive())
+			{
+				drive.moveStraight(Constants.AUTO_DIST);
+				state++;
+			}
+		case 1:
+			if (!drive.moveGetActive())
+			{
+				drive.moveTurn(90.0, 0.0);
+				state++;
+			}
+		case 2:
+			//if (LoopVision.getDistanceFromCenter())
+			{
+				//If the robot is off from its course, adjust and go back a step.
+				this.adjust();
+				state--;
+			}
+		
+	}
+		//robot.driveTrain.moveStraight(1);
+		//robot.driveTrain.moveTurn(1, 90);
 	}
 	public void rightPegCommands(){
-		robot.driveTrain.moveStraight(1);
-		robot.driveTrain.moveTurn(1, 90);
+		switch(state) {
+		case 0:
+			if (!drive.moveGetActive())
+			{
+				drive.moveStraight(Constants.AUTO_DIST);
+				state++;
+			}
+		case 1:
+			if (!drive.moveGetActive())
+			{
+				drive.moveTurn(90.0, 0.0);
+				state++;
+			}
+		case 2:
+			//if (LoopVision.getDistanceFromCenter())
+			{
+				//If the robot is off from its course, adjust and go back a step.
+				this.adjust();
+				state--;
+			}
+		
+	}
+		//robot.driveTrain.moveStraight(1);
+		//robot.driveTrain.moveTurn(1, 90);
 	}
 	public void shootCommands() {
 		robot.driveTrain.moveStraight(2);
 		robot.driveTrain.moveTurn(1, 90);
 //		Constants.shooter.set(0.98);;
 	}
-	
+	public void adjust() {
+		//Adjust the robot back on track
+	}
 }
