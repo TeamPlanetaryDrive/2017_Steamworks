@@ -42,9 +42,10 @@ public class Constants {
 	public static int LEFT_JOYSTICK_PORT = 0,
 			RIGHT_JOYSTICK_PORT = 1;
 
-	public static double distancePerPulse = 0.0637;
+	public static double distancePerPulse = 0.003522;
 
-
+	public static final double
+	AUTO_DIST = 0.5;					// (feet) 15.0
 
 	/**
 	 * SpeedController Stuff
@@ -106,10 +107,10 @@ public class Constants {
 		SEnc = new Encoder(SHOOTER_ENC_CHANNEL_A, SHOOTER_ENC_CHANNEL_B);
 
 		leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
-		rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
+//		rightJoystick = new Joystick(RIGHT_JOYSTICK_PORT);
 
 		gyro = new ADXRS450_Gyro();
-
+		gyro.calibrate();
 		gear = new DigitalInput(LIMIT_SWITCH_CHANNEL);
 	}
 

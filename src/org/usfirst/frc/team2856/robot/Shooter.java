@@ -1,10 +1,6 @@
 package org.usfirst.frc.team2856.robot;
 
-import org.usfirst.frc.team2856.robot.drivetrain.PIDMotor;
-
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.*;
 
 /**
  * 
@@ -23,7 +19,7 @@ public class Shooter {
 	
 	SpeedController hopper, shooter;
 	Encoder enc;
-	PIDMotor pidShoot;
+	PIDController pidShoot;
 	
 	public Shooter() {
 		
@@ -35,9 +31,15 @@ public class Shooter {
 		shooter = Constants.shooter;
 		enc = Constants.SEnc;
 		
-		pidShoot = new PIDMotor(Kp, Ki, Kd);
+		pidShoot = new PIDController(Kp, Ki, Kd, enc, shooter, 0.01);
 		
-		pidShoot.init(shooter, false, enc);
+		enc.reset();
+		enc.setPIDSourceType(PIDSourceType.kRate);
+		enc.setDistancePerPulse(Constants.distancePerPulse);
+		enc.setSamplesToAverage(Constants.DRIVE_ENC_SAMPLES_TO_AVERAGE);
+		
+		
+		pidShoot.setOutputRange (-0.95, 0.95);
 	}
 	
 	public void toggleShooter() {
