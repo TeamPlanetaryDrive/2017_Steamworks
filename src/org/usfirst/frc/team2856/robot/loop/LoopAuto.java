@@ -18,15 +18,12 @@ public class LoopAuto extends Loop{
 	public LoopAuto(Robot rob){super(rob);}
 	
 	public void init() {
-		robot.driveTrain.drive.setSafetyEnabled(false);		
-		Constants.lMotor.setInverted(false);
-		Constants.rMotor.setInverted(true);
 		autoSelected = SmartDashboard.getString("Auto Selector", "None");
 		System.out.println("Auto selected: " + autoSelected);
 		state = 0;
 		
-		robot.driveTrain.drive.setSafetyEnabled(false);		
 		drive = robot.driveTrain;
+		drive.initAuto();
 		stateMachine();
 	}
 
@@ -199,24 +196,26 @@ public class LoopAuto extends Loop{
 	public void leftPegCommands() {
 		switch(state) {
 			case 0:
-				if (!drive.moveGetActive())
-				{
-					drive.moveStraight(Constants.AUTO_DIST);
-					state++;
-				}
+				drive.moveStraight(16.0/3);
 			case 1:
-				if (!drive.moveGetActive())
-				{
-					drive.moveTurn(90.0, 0.0);
-					state++;
-				}
+				/*
+				 * If the robot does not see the left peg,
+				 * turn the robot
+				 * 
+				 * After it sees the peg, center the robot onto the peg
+				 */
 			case 2:
-				//if (LoopVision.getDistanceFromCenter())
-				{
-					//If the robot is off from its course, adjust and go back a step.
-					this.adjust();
-					state--;
-				}
+				/*
+				 * If the root is not yet on the peg, make it go forward
+				 */
+			case 3:
+				/*
+				 * If the robot is off from its course, adjust and go back a step.
+				 */
+			case 4:
+				/*
+				 * Important Note: When the robot gets near to the location, make it slow down!
+				 */
 			
 		}
 		
@@ -225,53 +224,57 @@ public class LoopAuto extends Loop{
 	}
 	public void middlePegCommands() {
 		switch(state) {
-		case 0:
-			if (!drive.moveGetActive())
-			{
-				drive.moveStraight(Constants.AUTO_DIST);
-				state++;
-			}
-		case 1:
-			if (!drive.moveGetActive())
-			{
-				drive.moveTurn(90.0, 0.0);
-				state++;
-			}
-		case 2:
-			//if (LoopVision.getDistanceFromCenter())
-			{
-				//If the robot is off from its course, adjust and go back a step.
-				this.adjust();
-				state--;
-			}
+			case 0:
+				drive.moveStraight(16.0/3);
+			case 1:
+				/*
+				 * If the robot does not see the middle peg,
+				 * turn the robot
+				 * 
+				 * After it sees the peg, center the robot onto the peg
+				 */
+			case 2:
+				/*
+				 * If the root is not yet on the peg, make it go forward
+				 */
+			case 3:
+				/*
+				 * If the robot is off from its course, adjust and go back a step.
+				 */
+			case 4:
+				/*
+				 * Important Note: When the robot gets near to the location, make it slow down!
+				 */
 		
-	}
+		}
 		//robot.driveTrain.moveStraight(1);
 		//robot.driveTrain.moveTurn(1, 90);
 	}
 	public void rightPegCommands(){
 		switch(state) {
-		case 0:
-			if (!drive.moveGetActive())
-			{
-				drive.moveStraight(Constants.AUTO_DIST);
-				state++;
-			}
-		case 1:
-			if (!drive.moveGetActive())
-			{
-				drive.moveTurn(90.0, 0.0);
-				state++;
-			}
-		case 2:
-			//if (LoopVision.getDistanceFromCenter())
-			{
-				//If the robot is off from its course, adjust and go back a step.
-				this.adjust();
-				state--;
-			}
+			case 0:
+				drive.moveStraight(16.0/3);
+			case 1:
+				/*
+				 * If the robot does not see the right peg,
+				 * turn the robot
+				 * 
+				 * After it sees the peg, center the robot onto the peg
+				 */
+			case 2:
+				/*
+				 * If the root is not yet on the peg, make it go forward
+				 */
+			case 3:
+				/*
+				 * If the robot is off from its course, adjust and go back a step.
+				 */
+			case 4:
+				/*
+				 * Important Note: When the robot gets near to the location, make it slow down!
+				 */
 		
-	}
+		}
 		//robot.driveTrain.moveStraight(1);
 		//robot.driveTrain.moveTurn(1, 90);
 	}
