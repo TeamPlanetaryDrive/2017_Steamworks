@@ -11,7 +11,7 @@ public class LoopTele extends Loop{
 	
 	//XXX Disable autonomous dependencies
 	public void init() {
-		
+		robot.driveTrain.initTele();
 	}
 
 	
