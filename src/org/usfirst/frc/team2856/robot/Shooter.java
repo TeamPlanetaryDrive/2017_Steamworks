@@ -15,6 +15,7 @@ public class Shooter {
 	
 	//booleans added
 	boolean shooterOn, hopperOn;
+	boolean waspressed;
 	
 	private static double Kp = 1,
 			Ki = 0.1,
@@ -28,6 +29,7 @@ public class Shooter {
 		
 		shooterOn = false;
 		hopperOn = false;
+		waspressed = false;		
 		
 		hopper = Constants.hopper;
 		shooter = Constants.shooter;
@@ -52,8 +54,14 @@ public class Shooter {
 	 * 
 	 */
 	public void updateTele(){
+		boolean ispressed = Constants.leftJoystick.getRawButton(1);
 		
+		if( ispressed && !waspressed){
+			toggleShooter();
+			toggleHopper();
+		}
 		
+		waspressed = ispressed; //impressed
 		
 		if(shooterOn)
 			pidShoot.setSetpoint(0.9);
