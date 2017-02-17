@@ -166,4 +166,25 @@ public class DriveTrain{
 		return moveActive;
 	}
 	
+	public void initAuto() {
+		// Disable user watchdog (since RobotDrive will not be called)
+		drive.setSafetyEnabled(false);
+
+		// Set motor drive directions (both forward)
+		Constants.lMotor.setInverted(Constants.DRIVE_MOTOR_LEFT_AUTO_DIR);
+		Constants.rMotor.setInverted(Constants.DRIVE_MOTOR_RIGHT_AUTO_DIR);
+	}
+
+	public void initTele() {
+		// Enable user watchdog (default when using RobotDrive)
+		drive.setSafetyEnabled(true);
+
+		// Set motor drive directions (left backward, right forward)
+		Constants.lMotor.setInverted(Constants.DRIVE_MOTOR_LEFT_TELE_DIR);
+		Constants.rMotor.setInverted(Constants.DRIVE_MOTOR_RIGHT_TELE_DIR);
+	}
+	
+	
+	
+	
 }
