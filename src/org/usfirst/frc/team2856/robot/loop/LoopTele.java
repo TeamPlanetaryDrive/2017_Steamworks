@@ -18,9 +18,6 @@ public class LoopTele extends Loop{
 	
 	
 	
-	//XXX DriveTrain
-	//XXX Shooter
-	//XXX Climber
 	
 	public void loop() {
 		
