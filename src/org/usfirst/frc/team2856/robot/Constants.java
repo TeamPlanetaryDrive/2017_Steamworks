@@ -24,8 +24,11 @@ public class Constants {
 	public static int SHOOTER_CHANNEL = 2,
 			HOPPER_CHANNEL = 3,
 			CLIMBER_CHANNEL = 4;
-
-	public static int LIMIT_SWITCH_CHANNEL = 5;
+	
+	public static int INTAKE_CHANNEL = 5;
+	
+	
+	public static int LIMIT_SWITCH_CHANNEL = 6;
 
 	//	public static Port GYRO_PORT;
 
@@ -75,7 +78,8 @@ public class Constants {
 
 	public static Talon shooter, 
 	hopper, 
-	climber;
+	climber,
+	intake;
 
 	public static DigitalInput gearIn;
 
@@ -99,7 +103,8 @@ public class Constants {
 		shooter = new Talon(SHOOTER_CHANNEL);
 		hopper = new Talon(HOPPER_CHANNEL);
 		climber = new Talon(CLIMBER_CHANNEL);
-
+		intake = new Talon(INTAKE_CHANNEL);
+		
 		gearIn = new DigitalInput(LIMIT_SWITCH_CHANNEL);
 
 		LEnc = new Encoder(LEFT_ENC_CHANNEL_A, LEFT_ENC_CHANNEL_B);
