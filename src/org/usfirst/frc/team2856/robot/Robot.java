@@ -34,7 +34,6 @@ public class Robot extends IterativeRobot {
     LoopAuto auto;
     
     //Joysticks
-    public Joystick left, right;
     public DriveTrain driveTrain;
     public Shooter shooter;
     public Climber climber;

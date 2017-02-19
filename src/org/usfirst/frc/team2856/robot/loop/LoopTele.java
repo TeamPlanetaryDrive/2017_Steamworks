@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2856.robot.loop;
 
+import org.usfirst.frc.team2856.robot.Constants;
 import org.usfirst.frc.team2856.robot.Robot;
 
 public class LoopTele extends Loop{
@@ -23,7 +24,12 @@ public class LoopTele extends Loop{
 	
 	public void loop() {
 		
-		robot.driveTrain.arcadeDrive(robot.left);
+		
+		if (Constants.leftJoystick.getTrigger()){
+			robot.driveTrain.arcadeDrive(Constants.leftJoystick.getY()/3, Constants.leftJoystick.getX()/3);
+		}else{
+			robot.driveTrain.arcadeDrive(Constants.leftJoystick);
+		}
 		robot.shooter.updateTele();
 		robot.climber.updateTele();
 		
