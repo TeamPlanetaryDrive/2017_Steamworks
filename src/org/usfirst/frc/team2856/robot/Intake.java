@@ -29,7 +29,7 @@ public class Intake {
 		
 		
 		if(intakeOn){
-			motor.set(0.9);
+			motor.set(0.9);	//whatever the intake speed is
 		}else{
 			motor.set(0);
 		}

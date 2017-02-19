@@ -8,6 +8,7 @@ public class Climber {
 	private SpeedController motor;
 	private double climbSpeed = 0.3424243244;	//climbSpeed & intakeSpeed are random values
 	
+	//booleans for button pressing
 	boolean running;
 	boolean prevPressed;
 	boolean currPressed;
