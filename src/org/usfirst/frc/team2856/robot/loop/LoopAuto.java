@@ -195,7 +195,9 @@ public class LoopAuto extends Loop{
 	
 	public void leftPegCommands() {
 		switch(state) {
-			case 0:
+		//The robot will move 13.5428085...ft+ forward from starting position (figure out later)
+		//then turn 120 degrees right to face the peg.
+		case 0:
 				drive.moveStraight(16.0/3);
 			case 1:
 				/*
@@ -224,6 +226,7 @@ public class LoopAuto extends Loop{
 	}
 	public void middlePegCommands() {
 		switch(state) {
+		//the robot will move 9 1/3 ft forward from the starting position (figure out later)
 			case 0:
 				drive.moveStraight(16.0/3);
 			case 1:
@@ -252,6 +255,8 @@ public class LoopAuto extends Loop{
 	}
 	public void rightPegCommands(){
 		switch(state) {
+		//The robot will move 13.5428085...ft+ forward from starting position (figure out later)
+		//then turn 120 degrees left to face the peg.
 			case 0:
 				drive.moveStraight(16.0/3);
 			case 1:
