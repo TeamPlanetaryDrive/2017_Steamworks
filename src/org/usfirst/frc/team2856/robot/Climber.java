@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2856.robot;
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 //this is the climber class
 public class Climber {
@@ -23,7 +24,9 @@ public class Climber {
 	
 	//move
 	public void updateTele(){
-		currPressed = Constants.leftJoystick.getRawButton(00000000);
+		currPressed = Constants.leftJoystick.getRawButton(6);
+		if(currPressed)
+			SmartDashboard.putString("DB/String 0", "Button 6 Pressed- climber");
 		
 		if(currPressed && !prevPressed){
 			running = !running;

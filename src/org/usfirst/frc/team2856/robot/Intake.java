@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2856.robot;
 
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Intake {
 	//PMVs
@@ -19,8 +20,20 @@ public class Intake {
 	}
 	
 	public void updateTele(){
-		currPressed = Constants.leftJoystick.getRawButton(00000003);
-
+		if(Constants.leftJoystick.getRawButton(4))
+			currPressed = Constants.leftJoystick.getRawButton(4);
+		else{
+			if(Constants.leftJoystick.getRawButton(5))
+				currPressed = Constants.leftJoystick.getRawButton(5);
+			else
+				currPressed=false;
+		}
+		
+		if(Constants.leftJoystick.getRawButton(4))
+			SmartDashboard.putString("DB/String 0", "Button 4 Pressed- positive intake");
+		if(Constants.leftJoystick.getRawButton(5))
+			SmartDashboard.putString("DB/String 0", "Button 5 Pressed- negative intake");
+		
 		if(currPressed && !prevPressed){
 			intakeOn = !intakeOn;
 		}
@@ -29,7 +42,10 @@ public class Intake {
 		
 		
 		if(intakeOn){
-			motor.set(0.9);	//whatever the intake speed is
+			if(Constants.leftJoystick.getRawButton(4))
+				motor.set(0.9);	//whatever the intake speed is
+			else
+				motor.set(-0.9);
 		}else{
 			motor.set(0);
 		}

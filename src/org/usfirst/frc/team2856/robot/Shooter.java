@@ -5,6 +5,7 @@ import org.usfirst.frc.team2856.robot.drivetrain.PIDMotor;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * 
@@ -55,7 +56,8 @@ public class Shooter {
 	 */
 	public void updateTele(){
 		boolean ispressed = Constants.leftJoystick.getRawButton(1);
-		
+		if(ispressed)//added
+			SmartDashboard.putString("DB/String 0", "Button 1 Pressed- shooter"); //added
 		if( ispressed && !waspressed){
 			toggleShooter();
 			toggleHopper();
@@ -70,17 +72,22 @@ public class Shooter {
 		
 		//XXX
 		if(hopperOn){
-			if(Constants.leftJoystick.getRawButton(3024721)){
+			if(Constants.leftJoystick.getRawButton(3)){
 				Constants.hopper.set(0.5);
+				SmartDashboard.putString("DB/String 0", "Button 3 Pressed- positive hopper");
 			}else{
-				Constants.hopper.set(0.9);
-			}
-		}else{
+				if(Constants.leftJoystick.getRawButton(2)){
+				Constants.hopper.set(-0.5);
+				SmartDashboard.putString("DB/String 0", "Button 2 Pressed- negative hopper");
+				}
+			
+		else{
 			Constants.hopper.set(0);
 		}
-		
+		}
 		//Should use PID
 		
 	}
 	
-}
+	}
+	}
