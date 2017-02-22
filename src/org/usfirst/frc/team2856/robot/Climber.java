@@ -11,37 +11,19 @@ public class Climber {
 	
 	//booleans for button pressing
 	boolean running;
-	boolean prevPressed;
-	boolean currPressed;
 	
 	
 	//constructor
 	public Climber(){
 		motor = Constants.climber; //not actual channel
-		prevPressed = false;
 		running = true;
 	}
 	
 	//move
 	public void updateTele(){
-		currPressed = Constants.leftJoystick.getRawButton(6);
-		if(currPressed)
-			SmartDashboard.putString("DB/String 0", "Button 6 Pressed- climber");
-		
-		if(currPressed && !prevPressed){
-			running = !running;
+		if( Constants.leftJoystick.getRawButton(6)){
+			motor.set(1);
 		}
-		
-		climbSpeed=Math.max(Constants.leftJoystick.getY(), 0);
-		
-		//if a different button is pressed and held, robot will move by a certain speed
-		if(running){
-			motor.set(climbSpeed);
-		}else{
-			motor.set(0);
-		}
-		
-		prevPressed = currPressed;
 	}
 	
 	//accessor
