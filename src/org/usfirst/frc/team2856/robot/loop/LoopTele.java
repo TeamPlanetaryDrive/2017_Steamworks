@@ -29,7 +29,7 @@ public class LoopTele extends Loop{
 		}
 		robot.shooter.updateTele();
 		robot.climber.updateTele();
-		
+		robot.intake.updateTele();
 		
 	}
 

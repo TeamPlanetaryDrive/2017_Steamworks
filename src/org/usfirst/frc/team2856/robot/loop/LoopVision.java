@@ -1,14 +1,8 @@
 package org.usfirst.frc.team2856.robot.loop;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.opencv.core.*;
-import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team2856.robot.Robot;
 
-import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
+import edu.wpi.cscore.AxisCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 
 public class LoopVision extends Loop{
@@ -16,6 +10,8 @@ public class LoopVision extends Loop{
 	public LoopVision(Robot rob){super(rob);}
 	
 	public void init() {
+		
+		/*
 		Thread camThread;
 		camThread = new Thread(() -> {
 			CameraServer.getInstance().addAxisCamera("10.28.56.11");
@@ -76,6 +72,9 @@ public class LoopVision extends Loop{
 		});
 		
 		camThread.start();
+		*/
+		AxisCamera a = CameraServer.getInstance().addAxisCamera("axis-camera.local");
+		CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	public void loop() {

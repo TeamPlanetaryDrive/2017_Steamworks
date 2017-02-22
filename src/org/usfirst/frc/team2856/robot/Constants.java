@@ -116,7 +116,6 @@ public class Constants {
 
 		gyro = new ADXRS450_Gyro();
 		gyro.calibrate();
-		gear = new DigitalInput(LIMIT_SWITCH_CHANNEL);
 	}
 
 }

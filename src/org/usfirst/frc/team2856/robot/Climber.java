@@ -32,7 +32,7 @@ public class Climber {
 			running = !running;
 		}
 		
-		climbSpeed=Constants.leftJoystick.getY();
+		climbSpeed=Math.max(Constants.leftJoystick.getY(), 0);
 		
 		//if a different button is pressed and held, robot will move by a certain speed
 		if(running){

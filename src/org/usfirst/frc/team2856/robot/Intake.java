@@ -42,11 +42,14 @@ public class Intake {
 		
 		
 		if(intakeOn){
+			System.out.println("Hi!");
 			if(Constants.leftJoystick.getRawButton(4))
 				motor.set(0.9);	//whatever the intake speed is
 			else
 				motor.set(-0.9);
 		}else{
+			
+			System.out.println("Bye!");
 			motor.set(0);
 		}
 		
