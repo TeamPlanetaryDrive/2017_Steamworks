@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2856.robot;
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 public class Constants {
@@ -107,8 +108,8 @@ public class Constants {
 		
 		gearIn = new DigitalInput(LIMIT_SWITCH_CHANNEL);
 
-		LEnc = new Encoder(LEFT_ENC_CHANNEL_A, LEFT_ENC_CHANNEL_B);
-		REnc = new Encoder(RIGHT_ENC_CHANNEL_A, RIGHT_ENC_CHANNEL_B);
+		LEnc = new Encoder(LEFT_ENC_CHANNEL_A, LEFT_ENC_CHANNEL_B, false, EncodingType.k4X);
+		REnc = new Encoder(RIGHT_ENC_CHANNEL_A, RIGHT_ENC_CHANNEL_B, true, EncodingType.k4X);
 		SEnc = new Encoder(SHOOTER_ENC_CHANNEL_A, SHOOTER_ENC_CHANNEL_B);
 
 		leftJoystick = new Joystick(LEFT_JOYSTICK_PORT);
