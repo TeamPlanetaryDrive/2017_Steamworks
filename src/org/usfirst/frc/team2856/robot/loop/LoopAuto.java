@@ -24,8 +24,6 @@ public class LoopAuto extends Loop{
 		
 		drive = robot.driveTrain;
 		drive.initAuto();
-		Constants.gyro.reset();
-		Constants.gyro.calibrate();
 		stateMachine();
 	}
 
